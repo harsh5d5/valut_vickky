@@ -56,7 +56,6 @@ export default function Home() {
   };
 
   const deleteItem = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this from your Vault?")) return;
     try {
       await api.deleteItem(id);
       setItems(items.filter(item => item.id !== id));
