@@ -192,11 +192,12 @@
 
 .card {
   background: white;
-  padding: 20px 24px;
+  padding: 16px 20px;
   display: grid;
-  grid-template-columns: 4px 1fr auto auto;
+  grid-template-columns: 4px 24px 1fr auto auto;
+  /* Fix: Added 5th column for Tick */
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   position: relative;
   transition: var(--transition-smooth);
 }
@@ -305,8 +306,8 @@
 }
 
 .tickCircle {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border: 1.5px solid #cbd5e1;
   border-radius: 50%;
   display: flex;
@@ -315,6 +316,9 @@
   cursor: pointer;
   transition: all 0.2s ease;
   color: transparent;
+  z-index: 10;
+  background: #fff;
+  flex-shrink: 0;
 }
 
 .tickCircle:hover {
@@ -434,10 +438,10 @@
 
   /* Card Mobile Adjustments */
   .card {
-    padding: 16px;
-    grid-template-columns: 4px 1fr auto auto;
-    /* Fix: Added 4th column */
-    gap: 12px;
+    padding: 12px;
+    grid-template-columns: 4px 24px 1fr auto auto;
+    /* Fix: 5 columns for mobile too */
+    gap: 8px;
   }
 
   .cardTitle {
