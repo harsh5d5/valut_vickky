@@ -279,12 +279,18 @@
 .checkButton {
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 10px;
+  /* Increased hit area */
+  margin-left: -10px;
+  /* Adjust for padding to keep alignment */
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition-smooth);
+  position: relative;
+  z-index: 10;
+  /* Keep it above everything else */
 }
 
 .circle {
