@@ -11,7 +11,11 @@ app = FastAPI(title="Vault API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://valut-vickky.vercel.app",
+        "https://valut-vickky-qsgo4iuw8-vickkys-projects-d62053fa.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
