@@ -27,4 +27,13 @@ export const api = {
         if (!response.ok) throw new Error("Failed to delete item");
         return response.json();
     },
+
+    // Toggle completion status
+    toggleComplete: async (id: number) => {
+        const response = await fetch(`${API_BASE_URL}/items/${id}/toggle`, {
+            method: "PATCH",
+        });
+        if (!response.ok) throw new Error("Failed to toggle item status");
+        return response.json();
+    },
 };

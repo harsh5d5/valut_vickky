@@ -43,6 +43,16 @@ def delete_item(item_id: int, db: Session = Depends(database.get_db)):
     db.commit()
     return {"message": "Item deleted successfully"}
 
+@app.patch("/items/{item_id}/toggle", response_model=schemas.VaultItem)
+def toggle_item_complete(item_id: int, db: Session = Depends(database.get_db)):
+    db_item = db.query(models.VaultItem).filter(models.VaultItem.id == item_id).first()
+    if not db_item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    db_item.is_completed = not db_item.is_completed
+    db.commit()
+    db.refresh(db_item)
+    return db_item
+
 if __name__ == "__main__":
     import uvicorn
     import os

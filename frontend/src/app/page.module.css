@@ -298,6 +298,41 @@
   color: #ef4444;
 }
 
+/* --- Completed State --- */
+.completedCard {
+  background: #fcfcfc !important;
+  opacity: 0.7;
+}
+
+.tickCircle {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: transparent;
+}
+
+.tickCircle:hover {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.tickActive {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: white;
+}
+
+.completedTitle {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
 .header {
   padding-bottom: 40px;
   text-align: center;
