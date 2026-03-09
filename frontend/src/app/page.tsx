@@ -55,12 +55,12 @@ export default function Home() {
     }
   };
 
-  const toggleComplete = async (id: number) => {
+  const toggleDone = async (id: number) => {
     try {
-      const updated = await api.toggleComplete(id);
+      const updated = await api.toggleItem(id);
       setItems(items.map(item => item.id === id ? updated : item));
     } catch (error) {
-      console.error("Error toggling completion:", error);
+      console.error("Error toggling item:", error);
     }
   };
 
@@ -159,24 +159,28 @@ export default function Home() {
           <div style={{ textAlign: 'center', padding: '40px', color: '#94a3b8' }}>No entries found yet.</div>
         ) : (
           filteredItems.map((item) => (
-            <div key={item.id} className={`${styles.card} ${item.is_completed ? styles.completedCard : ''}`}>
+            <div key={item.id} className={`${styles.card} ${item.is_completed ? styles.cardCompleted : ''}`}>
               <div className={`${styles.accentLine} ${item.category === 'Idea' ? styles.accentIdea :
                 item.category === 'Task' ? styles.accentTask :
                   styles.accentPayment
                 }`} />
 
-              <div
-                className={`${styles.tickCircle} ${item.is_completed ? styles.tickActive : ''}`}
-                onClick={() => toggleComplete(item.id)}
+              <button
+                className={`${styles.checkButton} ${item.is_completed ? styles.checked : ''}`}
+                onClick={() => toggleDone(item.id)}
               >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
+                {item.is_completed ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                ) : (
+                  <div className={styles.circle} />
+                )}
+              </button>
 
               <div className={styles.info}>
                 <div className={styles.titleRow}>
-                  <h2 className={`${styles.cardTitle} ${item.is_completed ? styles.completedTitle : ''}`}>{item.title}</h2>
+                  <h2 className={styles.cardTitle}>{item.title}</h2>
                   <span className={`${styles.categoryTag} ${item.category === 'Idea' ? styles.tagIdea :
                     item.category === 'Task' ? styles.tagTask :
                       styles.tagPayment

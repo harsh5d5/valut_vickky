@@ -19,21 +19,21 @@ export const api = {
         return response.json();
     },
 
+    // Toggle the completed state of an item
+    toggleItem: async (id: number) => {
+        const response = await fetch(`${API_BASE_URL}/items/${id}/toggle`, {
+            method: "PATCH",
+        });
+        if (!response.ok) throw new Error("Failed to toggle item state");
+        return response.json();
+    },
+
     // Delete an item permanently
     deleteItem: async (id: number) => {
         const response = await fetch(`${API_BASE_URL}/items/${id}`, {
             method: "DELETE",
         });
         if (!response.ok) throw new Error("Failed to delete item");
-        return response.json();
-    },
-
-    // Toggle completion status
-    toggleComplete: async (id: number) => {
-        const response = await fetch(`${API_BASE_URL}/items/${id}/toggle`, {
-            method: "PATCH",
-        });
-        if (!response.ok) throw new Error("Failed to toggle item status");
         return response.json();
     },
 };

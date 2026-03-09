@@ -192,12 +192,12 @@
 
 .card {
   background: white;
-  padding: 16px 20px;
+  padding: 20px 24px;
   display: grid;
-  grid-template-columns: 4px 24px 1fr auto auto;
-  /* Fix: Added 5th column for Tick */
+  grid-template-columns: 4px auto 1fr auto auto;
+  /* Added "auto" for check button */
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   position: relative;
   transition: var(--transition-smooth);
 }
@@ -276,6 +276,60 @@
   font-weight: 600;
 }
 
+.checkButton {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.circle {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.checkButton:hover .circle {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.checked {
+  color: #22c55e;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cardCompleted {
+  opacity: 0.6;
+}
+
+.cardCompleted .cardTitle {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.cardCompleted .cardContent {
+  color: #cbd5e1;
+}
+
 .deleteBtn {
   background: transparent;
   color: #cbd5e1;
@@ -297,44 +351,6 @@
 .deleteBtn:hover {
   background: #fee2e2;
   color: #ef4444;
-}
-
-/* --- Completed State --- */
-.completedCard {
-  background: #fcfcfc !important;
-  opacity: 0.7;
-}
-
-.tickCircle {
-  width: 24px;
-  height: 24px;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: transparent;
-  z-index: 10;
-  background: #fff;
-  flex-shrink: 0;
-}
-
-.tickCircle:hover {
-  border-color: #22c55e;
-  background: #f0fdf4;
-}
-
-.tickActive {
-  background: #22c55e;
-  border-color: #22c55e;
-  color: white;
-}
-
-.completedTitle {
-  text-decoration: line-through;
-  color: #94a3b8;
 }
 
 .header {
@@ -438,10 +454,10 @@
 
   /* Card Mobile Adjustments */
   .card {
-    padding: 12px;
-    grid-template-columns: 4px 24px 1fr auto auto;
-    /* Fix: 5 columns for mobile too */
-    gap: 8px;
+    padding: 16px;
+    grid-template-columns: 4px auto 1fr auto auto;
+    /* Added space for check button */
+    gap: 12px;
   }
 
   .cardTitle {
