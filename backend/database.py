@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
  
-# Use environment variable for database connection if available
+
 SQLALCHEMY_DATABASE_URL = os.getenv(
     "DATABASE_URL", 
     "postgresql://neondb_owner:npg_EOsDJMnU5S8d@ep-steep-snow-a9740sej-pooler.gwc.azure.neon.tech/neondb?sslmode=require"
