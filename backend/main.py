@@ -33,7 +33,6 @@ def create_item(item: schemas.VaultItemCreate, db: Session = Depends(database.ge
     db.commit()
     db.refresh(db_item)
     return db_item
-
 @app.patch("/items/{item_id}/toggle", response_model=schemas.VaultItem)
 def toggle_item(item_id: int, db: Session = Depends(database.get_db)):
     db_item = db.query(models.VaultItem).filter(models.VaultItem.id == item_id).first()
@@ -43,7 +42,6 @@ def toggle_item(item_id: int, db: Session = Depends(database.get_db)):
     db.commit()
     db.refresh(db_item)
     return db_item
-
 @app.delete("/items/{item_id}")
 def delete_item(item_id: int, db: Session = Depends(database.get_db)):
     db_item = db.query(models.VaultItem).filter(models.VaultItem.id == item_id).first()
